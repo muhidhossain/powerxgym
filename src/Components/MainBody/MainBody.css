@@ -1,0 +1,93 @@
+.mainBody{
+    padding: 80px 100px;
+}
+
+.mainBody > section:first-child{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainBody > section > section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.33%;
+    height: 450px;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.mainBody > section > section h2{
+    font-size: 40px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.mainBody > section > section p{
+    padding: 0 50px;
+}
+
+.mainBody > section > section:first-child{
+    background-image: url(../../images/mainBody/option-1.jpg);
+    background-position: center;
+    background-size: contain;
+    color: white;
+}
+
+.mainBody > section > section:nth-child(2){
+    background-image: url(../../images/mainBody/option-2.jpg);
+    background-position: center;
+    background-size: contain;
+    color: goldenrod;
+}
+
+.mainBody > section > section:nth-child(2) img{
+    margin-bottom: 40px;
+}
+
+.mainBody > section > section:last-child{
+    background-image: url(../../images/mainBody/option-3.jpg);
+    background-position: center;
+    background-size: contain;
+    color: white;
+}
+
+.mainBody > section > section:last-child img{
+    margin-bottom: 30px;
+}
+
+.mainBody .aboutUs{
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.mainBody .aboutUs > img{
+    height: 550px;
+}
+
+.mainBody .aboutUs > div:last-child{
+    position: relative;
+    bottom: 20px;
+    width: 40%;
+}
+
+.mainBody .aboutUs > div:last-child > h1{
+    color: gray;
+    opacity: 30%;
+    font-size: 50px;
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif;
+    line-height: .2;
+}
+
+.mainBody .aboutUs > div:last-child > h2{
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.mainBody .aboutUs > div:last-child > p{
+    line-height: 1.8;
+}
