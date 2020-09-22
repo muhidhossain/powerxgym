@@ -39,6 +39,9 @@ const MainBody = () => {
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed molestiae animi soluta, libero aut doloribus ex dolorum facilis deserunt pariatur possimus praesentium eligendi cumque enim at accusantium! Magni fuga adipisci quis sequi ab error, repellendus sit neque eligendi cumque odio.</p>
                 </div>
             </section>
+            <section className='programs'>
+                <h2>TRAINING <span style={{color: 'goldenrod'}}>PROGRAMS</span></h2>
+            </section>
         </main>
     );
 };

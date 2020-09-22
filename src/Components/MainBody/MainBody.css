@@ -91,3 +91,8 @@
 .mainBody .aboutUs > div:last-child > p{
     line-height: 1.8;
 }
+
+.mainBody .programs{
+    display: flex;
+    justify-content: center;
+}
