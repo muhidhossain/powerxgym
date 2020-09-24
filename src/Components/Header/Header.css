@@ -194,7 +194,7 @@
 
     .header .navBar > section:last-child{
         display: block;
-        padding: 15px 0;
+        padding: 10px 0;
     }
 
     .header .headerBody{
@@ -235,6 +235,11 @@
 
     .header .navBar > h2{
         font-size: 20px;
+    }
+
+    .header .navBar > section:last-child{
+        display: block;
+        padding: 0;
     }
 
     .header .headerBody h1{
