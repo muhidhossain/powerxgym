@@ -1,24 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlayCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Button, IconButton, Menu, MenuItem } from '@material-ui/core';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-
-const options = [
-    'Home',
-    'Service',
-    'Our Classes',
-    'About us',
-    'Blog',
-    'Pricing',
-    'Contact us'
-];
+import { Link } from "react-router-dom";
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const ITEM_HEIGHT = 48;
 
 const Header = () => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -34,13 +26,13 @@ const Header = () => {
             <nav className="navBar">
                 <h2>POWER <span style={{ color: "goldenrod" }}>X</span> </h2>
                 <section className='navOption'>
-                    <p>Home</p>
-                    <p>Service</p>
-                    <p>Our Classes</p>
-                    <p>About us</p>
-                    <p>Blog</p>
-                    <p>Pricing</p>
-                    <p>Contact us</p>
+                    <p><Link to='/' style={{ color: 'goldenrod' }}>Home</Link></p>
+                    <p><Link to='/services'>Services</Link></p>
+                    <p><Link to='/ourClasses'>Our Classes</Link></p>
+                    <p><Link to='/aboutUs'>About us</Link></p>
+                    <p><Link to='/blog'>Blog</Link></p>
+                    <p><Link to='/pricing'>Pricing</Link></p>
+                    <p><Link to='/contactUs'>Contact us</Link></p>
                 </section>
                 <section>
                     <IconButton
@@ -49,7 +41,7 @@ const Header = () => {
                         aria-haspopup="true"
                         onClick={handleClick}
                     >
-                        <MoreVertIcon style={{ color: "white" }} />
+                        <FontAwesomeIcon icon={faEllipsisV} style={{ color: "white" }} />
                     </IconButton>
                     <Menu
                         id="long-menu"
@@ -64,11 +56,41 @@ const Header = () => {
                             },
                         }}
                     >
-                        {options.map((option) => (
-                            <MenuItem key={option} onClick={handleClose}>
-                                {option}
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
+                            <MenuItem style={{ backgroundColor: 'goldenrod', fontWeight: '600' }} onClick={handleClose}>
+                                Home
                             </MenuItem>
-                        ))}
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to='/services'>
+                            <MenuItem style={{ fontWeight: '600' }} onClick={handleClose}>
+                                Services
+                            </MenuItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to='/ourClasses'>
+                            <MenuItem style={{ fontWeight: '600' }} onClick={handleClose}>
+                                Our Classes
+                            </MenuItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to='/aboutUs'>
+                            <MenuItem style={{ fontWeight: '600' }} onClick={handleClose}>
+                                About us
+                            </MenuItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to='/blog'>
+                            <MenuItem style={{ fontWeight: '600' }} onClick={handleClose}>
+                                Blog
+                            </MenuItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to='/pricing'>
+                            <MenuItem style={{ fontWeight: '600' }} onClick={handleClose}>
+                                Pricing
+                            </MenuItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to='/contactUs'>
+                            <MenuItem style={{ fontWeight: '600' }} onClick={handleClose}>
+                                Contact us
+                            </MenuItem>
+                        </Link>
                     </Menu>
                 </section>
             </nav>
@@ -79,11 +101,10 @@ const Header = () => {
                     <Button>JOIN US</Button>
                 </section>
                 <section>
-                    <FontAwesomeIcon icon={faTimes} />
-                    <FontAwesomeIcon icon={faPlayCircle} />
+                    <FontAwesomeIcon icon={faYoutube} />
                 </section>
             </section>
-        </header>
+        </header >
     );
 };
 

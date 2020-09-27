@@ -3,7 +3,7 @@
     background-size: cover;
     background-position: center;
     padding: 0 60px;
-    height: 850px;
+    height: 700px;
 }
 
 .header .navBar{
@@ -24,8 +24,12 @@
 
 .header .navBar .navOption > p{
     padding: 15px 25px;
-    color: white;
     font-weight: 600;
+}
+
+.header .navBar .navOption > p > *{
+    text-decoration: none;
+    color: white;
 }
 
 .header .navBar > section:last-child{
@@ -36,7 +40,6 @@
     display: flex;
     justify-content: space-between;
     color: white;
-    margin-top: 30px;
 }
 
 .header .headerBody > *:first-child{
@@ -68,19 +71,10 @@
     border: none;
 }
 
-.header .headerBody > section:last-child > *:first-child{
-    font-size: 800px;
+.header .headerBody > section:last-child > *{
+    font-size: 600px;
     opacity: 10%;
-    position: relative;
-    bottom: 100px;
-    left: 80px;
-}
-
-.header .headerBody > section:last-child > *:last-child{
-    position: relative;
-    bottom: 370px;
-    right: 240px;
-    font-size: 80px;
+    margin-top: -40px;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -100,14 +94,9 @@
         font-size: 14px;
     }
 
-    .header .headerBody > section:last-child > *:first-child{
-        font-size: 600px;
-        bottom: 80px;
-    }
-
-    .header .headerBody > section:last-child > *:last-child{
-        right: 170px;
-        bottom: 275px;
+    .header .headerBody > section:last-child > *{
+        font-size: 450px;
+        margin-top: 0;
     }
 }
 
@@ -137,15 +126,8 @@
         font-size: 20px;
     }
 
-    .header .headerBody > section:last-child > *:first-child{
-        font-size: 500px;
-        bottom: 40px;
-    }
-
-    .header .headerBody > section:last-child > *:last-child{
-        right: 125px;
-        bottom: 205px;
-        font-size: 60px;
+    .header .headerBody > section:last-child > *{
+        font-size: 350px;
     }
 }
 
@@ -171,15 +153,8 @@
         bottom: 40px;
     }
 
-    .header .headerBody > section:last-child > *:first-child{
-        font-size: 400px;
-        bottom: 40px;
-    }
-
-    .header .headerBody > section:last-child > *:last-child{
-        right: 78px;
-        bottom: 175px;
-        font-size: 40px;
+    .header .headerBody > section:last-child > *{
+        font-size: 280px;
     }
 }
 
@@ -195,6 +170,10 @@
     .header .navBar > section:last-child{
         display: block;
         padding: 10px 0;
+    }
+
+    .header .navBar > section:last-child > *{
+        font-size: 16px;
     }
 
     .header .headerBody{
@@ -213,14 +192,9 @@
         font-size: 10px;
     }
 
-    .header .headerBody > section:last-child > *:first-child{
-        font-size: 350px;
-        bottom: 40px;
-    }
-
-    .header .headerBody > section:last-child > *:last-child{
-        right: 60px;
-        bottom: 157px;
+    .header .headerBody > section:last-child > *{
+        font-size: 250px;
+        margin-right: -30px;
     }
 }
 
@@ -255,16 +229,8 @@
         padding: 5px 20px;
     }
 
-    .header .headerBody > section:last-child > *:first-child{
+    .header .headerBody > section:last-child > *{
         font-size: 200px;
-        bottom: 0;
-        left: 0;
-    }
-
-    .header .headerBody > section:last-child > *:last-child{
-        right: 83px;
-        bottom: 63px;
-        font-size: 30px;
     }
 }
 
@@ -289,14 +255,8 @@
         font-size: 10px;
     }
 
-    .header .headerBody > section:last-child > *:first-child{
+    .header .headerBody > section:last-child > *{
         font-size: 150px;
-    }
-
-    .header .headerBody > section:last-child > *:last-child{
-        right: 62px;
-        bottom: 48px;
-        font-size: 20px;
     }
 }
 
@@ -314,11 +274,21 @@
         font-size: 15px;
     }
 
+    .header .navBar > section:last-child > *{
+        font-size: 12px;
+    }
+
     .header .headerBody h1{
         font-size: 18px;
     }
 
     .header .headerBody > section:first-child > p{
         line-height: 1;
+    }
+
+    .header .headerBody > section:last-child > *{
+        font-size: 100px;
+        margin-right: -5px;
+        margin-top: 20px;
     }
 }
