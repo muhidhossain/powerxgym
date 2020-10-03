@@ -1,0 +1,80 @@
+.classDetails{
+    display: flex;
+    padding: 40px 80px;
+}
+
+.classDetails > section:first-child{
+    width: 60%;
+    margin-right: 40px;
+}
+
+.classDetails > section:first-child img{
+    height: 400px;
+    width: 100%;
+}
+
+.classDetails > section:first-child > p{
+    color: gray;
+    line-height: 2;
+}
+
+.classDetails > section:first-child > ul{
+    line-height: 2.5;
+    list-style: none;
+    
+}
+
+.classDetails > section:first-child > ul li::before {
+    content: '▣';
+    color: goldenrod;
+    margin-right: 10px;
+}
+
+.classDetails > section:last-child{
+    width: 40%;
+    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.classDetails > section:last-child > div > h2{
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+}
+
+.classDetails > section:last-child > div > div{
+    display: flex;
+}
+
+.classDetails > section:last-child > div > div > div{
+    box-shadow: 5px 5px 10px lightgray;
+    width: 50%;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.classDetails > section:last-child > div > div > div > h4{
+    font-size: 20px;
+    line-height: .1;
+}
+
+.classDetails > section:last-child > div > div > div > p{
+    color: goldenrod;
+    line-height: .1;
+}
+
+.classDetails > section:last-child > div:last-child{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.classDetails > section:last-child > div:last-child > *{
+    background-color: goldenrod;
+    border-radius: 0;
+    font-family: 'Oswald', sans-serif;
+    padding: 10px 45px;
+    font-weight: 600;
+    font-size: 20px;
+}

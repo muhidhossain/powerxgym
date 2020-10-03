@@ -33,6 +33,24 @@ const SecondaryHeader = () => {
         else if (location.pathname === '/contactUs') {
             setHeaderText('Contact us')
         }
+        else if (location.pathname === '/physioTraining') {
+            setHeaderText('Physio Training')
+        }
+        else if (location.pathname === '/selfDefense') {
+            setHeaderText('Self Defense')
+        }
+        else if (location.pathname === '/advanceGym') {
+            setHeaderText('Advance Gym')
+        }
+        else if (location.pathname === '/cardioTraining') {
+            setHeaderText('Cardio Training')
+        }
+        else if (location.pathname === '/strengthTraining') {
+            setHeaderText('Strength Training')
+        }
+        else if (location.pathname === '/physioTraining2') {
+            setHeaderText('Physio Training')
+        }
     }, [location.pathname])
 
     const handleClick = (event) => {

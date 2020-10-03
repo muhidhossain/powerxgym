@@ -6,6 +6,7 @@ import MainBody from './Components/MainBody/MainBody';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SecondaryHeader from './Components/SecondaryHeader/SecondaryHeader';
 import OurClasses from './Components/OurClasses/OurClasses';
+import ClassDetails from './Components/ClassDetails/ClassDetails';
 
 function App() {
   return (
@@ -40,6 +41,36 @@ function App() {
           </Route>
           <Route path='/contactUs'>
             <SecondaryHeader></SecondaryHeader>
+            <Footer></Footer>
+          </Route>
+          <Route path='/physioTraining'>
+            <SecondaryHeader></SecondaryHeader>
+            <ClassDetails></ClassDetails>
+            <Footer></Footer>
+          </Route>
+          <Route path='/selfDefense'>
+            <SecondaryHeader></SecondaryHeader>
+            <ClassDetails></ClassDetails>
+            <Footer></Footer>
+          </Route>
+          <Route path='/advanceGym'>
+            <SecondaryHeader></SecondaryHeader>
+            <ClassDetails></ClassDetails>
+            <Footer></Footer>
+          </Route>
+          <Route path='/cardioTraining'>
+            <SecondaryHeader></SecondaryHeader>
+            <ClassDetails></ClassDetails>
+            <Footer></Footer>
+          </Route>
+          <Route path='/strengthTraining'>
+            <SecondaryHeader></SecondaryHeader>
+            <ClassDetails></ClassDetails>
+            <Footer></Footer>
+          </Route>
+          <Route path='/physioTraining2'>
+            <SecondaryHeader></SecondaryHeader>
+            <ClassDetails></ClassDetails>
             <Footer></Footer>
           </Route>
         </Switch>
