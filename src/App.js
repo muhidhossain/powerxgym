@@ -1,13 +1,50 @@
 import React from 'react';
 import './App.css';
+import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import MainBody from './Components/MainBody/MainBody';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SecondaryHeader from './Components/SecondaryHeader/SecondaryHeader';
+import OurClasses from './Components/OurClasses/OurClasses';
 
 function App() {
   return (
     <div className='powerX'>
-      <Header></Header>
-      <MainBody></MainBody>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Header></Header>
+            <MainBody></MainBody>
+            <Footer></Footer>
+          </Route>
+          <Route path='/services'>
+            <SecondaryHeader></SecondaryHeader>
+            <Footer></Footer>
+          </Route>
+          <Route path='/ourClasses'>
+            <SecondaryHeader></SecondaryHeader>
+            <OurClasses></OurClasses>
+            <Footer></Footer>
+          </Route>
+          <Route path='/aboutUs'>
+            <SecondaryHeader></SecondaryHeader>
+            <Footer></Footer>
+          </Route>
+          <Route path='/blog'>
+            <SecondaryHeader></SecondaryHeader>
+            <Footer></Footer>
+          </Route>
+          <Route path='/pricing'>
+            <SecondaryHeader></SecondaryHeader>
+            <Footer></Footer>
+          </Route>
+          <Route path='/contactUs'>
+            <SecondaryHeader></SecondaryHeader>
+            <Footer></Footer>
+          </Route>
+        </Switch>
+      </Router>
+
     </div>
   );
 }
