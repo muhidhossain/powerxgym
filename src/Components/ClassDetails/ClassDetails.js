@@ -7,7 +7,7 @@ import class4 from '../../images/ourClasses/class-4.jpg';
 import class5 from '../../images/ourClasses/class-5.jpg';
 import class6 from '../../images/ourClasses/class-6.jpg';
 import { Button } from '@material-ui/core';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const ClassDetails = () => {
     const [classImg, setClassImg] = useState(null);
@@ -83,7 +83,7 @@ const ClassDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <Button>JOIN US</Button>
+                    <Link style={{textDecoration: 'none'}} to='/pricing'><Button>JOIN US</Button></Link>
                 </div>
             </section>
         </main>

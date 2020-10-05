@@ -16,40 +16,40 @@ const SecondaryHeader = () => {
 
     useEffect(() => {
         if (location.pathname === '/services') {
-            setHeaderText('Services');
+            setHeaderText('SERVICES');
         }
         else if (location.pathname === '/ourClasses') {
-            setHeaderText('Our Classes')
+            setHeaderText('OUR CLASSES')
         }
         else if (location.pathname === '/aboutUs') {
-            setHeaderText('About us')
+            setHeaderText('ABOUT US')
         }
         else if (location.pathname === '/blog') {
-            setHeaderText('Blog')
+            setHeaderText('BLOG')
         }
         else if (location.pathname === '/pricing') {
-            setHeaderText('Pricing')
+            setHeaderText('PRICING PLANS')
         }
         else if (location.pathname === '/contactUs') {
-            setHeaderText('Contact us')
+            setHeaderText('CONTACT US')
         }
         else if (location.pathname === '/physioTraining') {
-            setHeaderText('Physio Training')
+            setHeaderText('PHYSIO TRAINING')
         }
         else if (location.pathname === '/selfDefense') {
-            setHeaderText('Self Defense')
+            setHeaderText('SELF DEFENSE')
         }
         else if (location.pathname === '/advanceGym') {
-            setHeaderText('Advance Gym')
+            setHeaderText('ADVANCE GYM')
         }
         else if (location.pathname === '/cardioTraining') {
-            setHeaderText('Cardio Training')
+            setHeaderText('CARDIO TRAINING')
         }
         else if (location.pathname === '/strengthTraining') {
-            setHeaderText('Strength Training')
+            setHeaderText('STRENGTH TRAINING')
         }
         else if (location.pathname === '/physioTraining2') {
-            setHeaderText('Physio Training')
+            setHeaderText('PHYSIO TRAINING')
         }
     }, [location.pathname])
 
