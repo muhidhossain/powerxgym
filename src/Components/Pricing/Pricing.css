@@ -57,7 +57,7 @@
     color: goldenrod;
 }
 
-.pricing .pricingDetails > div > *:last-child{
+.pricing .pricingDetails > div > *:last-child > *{
     background-color: goldenrod;
     border-radius: 0;
     font-family: 'Oswald', sans-serif;
@@ -85,6 +85,90 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.pricing section:last-child{
+    width: 100%;
+}
+
+.pricing section:last-child .steps{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 150px;
+}
+
+.pricing section:last-child .informationForm{
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    position: relative;
+    right: 230px;
+}
+
+.pricing section:last-child .informationForm input{
+    width: 400px;
+    padding: 20px;
+}
+
+.pricing section:last-child .informationForm .rightPosition{
+    position: relative;
+    left: 460px;
+    bottom: 98px;
+}
+
+.pricing section:last-child .informationForm .rightPosition2{
+    position: relative;
+    left: 460px;
+    bottom: 196px;
+}
+
+.pricing section:last-child .informationForm .rightPosition3{
+    position: relative;
+    left: 460px;
+    bottom: 274px;
+    width: 445px;
+}
+
+.pricing section:last-child .informationForm .rightPosition4{
+    position: relative;
+    left: 460px;
+    bottom: 353px;
+}
+
+.pricing section:last-child .informationForm .rightPosition5{
+    position: relative;
+    left: 460px;
+    bottom: 453px;
+}
+
+.pricing section:last-child .informationForm .leftPosition{
+    position: relative;
+    bottom: 98px;
+}
+
+.pricing section:last-child .informationForm .leftPosition2{
+    position: relative;
+    bottom: 196px;
+}
+
+.pricing section:last-child .informationForm .leftPosition3{
+    position: relative;
+    bottom: 254px;
+}
+
+.pricing section:last-child .informationForm .leftPosition4{
+    position: relative;
+    bottom: 354px;
+}
+
+.pricing section:last-child .informationForm select{
+    width: 135px;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.pricing section:last-child .informationForm small{
+    color: red;
 }
 
 @media (max-width: 1400px) {

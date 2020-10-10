@@ -75,6 +75,11 @@ function App() {
             <ClassDetails></ClassDetails>
             <Footer></Footer>
           </Route>
+          <Route path='/pricing/:path'>
+            <SecondaryHeader></SecondaryHeader>
+            <Pricing></Pricing>
+            <Footer></Footer>
+          </Route>
         </Switch>
       </Router>
 

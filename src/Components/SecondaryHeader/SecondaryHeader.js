@@ -51,6 +51,9 @@ const SecondaryHeader = () => {
         else if (location.pathname === '/physioTraining2') {
             setHeaderText('PHYSIO TRAINING')
         }
+        else if (location.pathname === '/pricing/:planDetails') {
+            setHeaderText('YOUR GYM MEMBERSHIP')
+        }
     }, [location.pathname])
 
     const handleClick = (event) => {
