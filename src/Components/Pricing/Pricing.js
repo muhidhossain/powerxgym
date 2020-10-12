@@ -2,11 +2,14 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, makeStyles, Step, StepConnector, StepLabel, Stepper, withStyles } from '@material-ui/core';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Pricing.css';
 import clsx from 'clsx';
 import { Check } from '@material-ui/icons';
 import { useForm } from "react-hook-form";
+import { useEffect } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
 
 const QontoConnector = withStyles({
     alternativeLabel: {
@@ -87,13 +90,85 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+class CheckoutForm extends React.Component {
+    handleSubmit = async (event) => {
+        // Block native form submission.
+        event.preventDefault();
+
+        const { stripe, elements } = this.props;
+
+        if (!stripe || !elements) {
+            // Stripe.js has not loaded yet. Make sure to disable
+            // form submission until Stripe.js has loaded.
+            return;
+        }
+
+        // Get a reference to a mounted CardElement. Elements knows how
+        // to find your CardElement because there can only ever be one of
+        // each type of element.
+        const cardElement = elements.getElement(CardElement);
+
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card: cardElement,
+        });
+
+        if (error) {
+            console.log('[error]', error);
+        } else {
+            console.log('[PaymentMethod]', paymentMethod);
+        }
+    };
+
+    render() {
+        const { stripe } = this.props;
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
+                            },
+                        },
+                    }}
+                />
+                <button type="submit" disabled={!stripe}>
+                    Pay
+            </button>
+            </form>
+        );
+    }
+}
+
+const InjectedCheckoutForm = () => {
+    return (
+        <ElementsConsumer>
+            {({ elements, stripe }) => (
+                <CheckoutForm elements={elements} stripe={stripe} />
+            )}
+        </ElementsConsumer>
+    );
+};
+
 const Pricing = () => {
-    const [pricingPlan, setPricingPlan] = useState();
+    const [pricingPlan, setPricingPlan] = useState(null);
     const [path, setPath] = useState(null);
     const [activeStep, setActiveStep] = useState(0);
     const [customerInformation, setCustomerInformation] = useState(null);
 
     const { register, handleSubmit, errors } = useForm();
+
+    const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+
+    const location = useLocation();
 
     const day = ['Day', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
     const month = ['Month', 'January', 'February', 'March', 'April', 'Mey', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -114,7 +189,11 @@ const Pricing = () => {
         setActiveStep(0);
     };
 
-    console.log(customerInformation);
+    useEffect(() => {
+        if (location.pathname === '/pricing') {
+            setPricingPlan(null)
+        }
+    }, [location.pathname])
     return (
         <main className='pricing'>
             {
@@ -178,7 +257,7 @@ const Pricing = () => {
                                 </Step>
                             ))}
                         </Stepper>
-                        <div className='informationForm' style={{ display: activeStep === 0 ? 'flex' : 'none' }}>
+                        <div className='informationForm' style={{ display: activeStep === 1 ? 'flex' : 'none' }}>
                             <form>
                                 <label>First Name</label>
                                 <br />
@@ -230,7 +309,7 @@ const Pricing = () => {
                                 <br />
                                 <label className='rightPosition3'>Gender</label>
                                 <br />
-                                <select className='rightPosition3' name='gender' ref={register({required: true})}>
+                                <select className='rightPosition3' name='gender' ref={register({ required: true })}>
                                     <option value='Gender'></option>
                                     <option value='female'>Female</option>
                                     <option value='Male'>Male</option>
@@ -262,8 +341,10 @@ const Pricing = () => {
                                 {errors.postcode && <small className='rightPosition5'>postcode is Required</small>}
                             </form>
                         </div>
-                        <div className='paymentForm' style={{ display: activeStep === 1 ? 'flex' : 'none' }}>
-                            <h1>This is Payment Form</h1>
+                        <div className='paymentForm' style={{ display: activeStep === 0 ? 'flex' : 'none' }}>
+                            <Elements stripe={stripePromise}>
+                                <InjectedCheckoutForm />
+                            </Elements>
                         </div>
                         <div className='steps'>
                             <div>
@@ -271,7 +352,7 @@ const Pricing = () => {
                                     <div>
                                         <Button onClick={handleReset} className={classes.button}>
                                             Reset
-                                    </Button>
+                                        </Button>
                                     </div>
                                 ) : (
                                         <div>

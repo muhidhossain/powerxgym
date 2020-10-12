@@ -102,12 +102,13 @@
     justify-content: center;
     height: 500px;
     position: relative;
-    right: 230px;
+    right: 222px;
 }
 
 .pricing section:last-child .informationForm input{
     width: 400px;
     padding: 20px;
+    outline: none;
 }
 
 .pricing section:last-child .informationForm .rightPosition{
@@ -139,6 +140,7 @@
     position: relative;
     left: 460px;
     bottom: 453px;
+    outline: none;
 }
 
 .pricing section:last-child .informationForm .leftPosition{
@@ -165,10 +167,20 @@
     width: 135px;
     padding: 20px;
     margin-right: 20px;
+    outline: none;
 }
 
 .pricing section:last-child .informationForm small{
     color: red;
+}
+
+.pricing section:last-child .paymentForm{
+    display: flex;
+    justify-content: center;
+}
+
+.pricing section:last-child .paymentForm > *{
+    width: 50%;
 }
 
 @media (max-width: 1400px) {
@@ -193,6 +205,34 @@
     .pricing .pricingDetails > div > *:last-child{
         padding: 5px 30px;
     }
+
+    .pricing section:last-child .steps{
+        margin-right: 50px;
+    }
+
+    .pricing section:last-child .informationForm{
+        right: 185px;
+    }
+
+    .pricing section:last-child .informationForm input{
+        width: 330px;
+    }
+
+    .pricing section:last-child .informationForm .rightPosition,
+    .pricing section:last-child .informationForm .rightPosition2,
+    .pricing section:last-child .informationForm .rightPosition4,
+    .pricing section:last-child .informationForm .rightPosition5{
+        left: 390px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition3{
+        left: 390px;
+        width: 375px;
+    }
+
+    .pricing section:last-child .informationForm select{
+        width: 111.5px;
+    }
 }
 
 @media (max-width: 850px) {
@@ -206,6 +246,34 @@
 
     .pricing .pricingDetails > div > h2{
         font-size: 25px;
+    }
+
+    .pricing section:last-child .steps{
+        margin-right: 20px;
+    }
+
+    .pricing section:last-child .informationForm{
+        right: 160px;
+    }
+
+    .pricing section:last-child .informationForm input{
+        width: 280px;
+    }
+
+    .pricing section:last-child .informationForm .rightPosition,
+    .pricing section:last-child .informationForm .rightPosition2,
+    .pricing section:last-child .informationForm .rightPosition4,
+    .pricing section:last-child .informationForm .rightPosition5{
+        left: 340px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition3{
+        left: 340px;
+        width: 325px;
+    }
+
+    .pricing section:last-child .informationForm select{
+        width: 94.5px;
     }
 }
 
@@ -239,6 +307,66 @@
     .pricing .pricingDetails > div > *:last-child{
         padding: 10px 40px;
     }
+
+    .pricing section:last-child .informationForm{
+        right: 115px;
+        height: 420px;
+    }
+
+    .pricing section:last-child .informationForm input{
+        width: 200px;
+        padding: 10px;
+    }
+
+    .pricing section:last-child .informationForm .rightPosition{
+        left: 240px;
+        bottom: 78px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition2{
+        left: 240px;
+        bottom: 157px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition3{
+        left: 240px;
+        bottom: 212px;
+        width: 225px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition4{
+        position: relative;
+        left: 240px;
+        bottom: 270px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition5{
+        position: relative;
+        left: 240px;
+        bottom: 347px;
+    }
+    
+    .pricing section:last-child .informationForm .leftPosition{
+        bottom: 79px;
+    }
+    
+    .pricing section:last-child .informationForm .leftPosition2{
+        bottom: 154px;
+    }
+    
+    .pricing section:last-child .informationForm .leftPosition3{
+        bottom: 190px;
+    }
+    
+    .pricing section:last-child .informationForm .leftPosition4{
+        bottom: 268px;
+    }
+
+    .pricing section:last-child .informationForm select{
+        width: 67.5px;
+        padding: 10px 5px;
+        margin-right: 10px;
+    }
 }
 
 @media (max-width: 550px) {
@@ -249,9 +377,43 @@
     .pricing > section > p{
         padding: 0 2px;
     }
+
+    .pricing section:last-child .steps{
+        margin-right: 0;
+    }
+
+    .pricing section:last-child .informationForm{
+        right: 90px;
+    }
+
+    .pricing section:last-child .informationForm input{
+        width: 150px;
+    }
+
+    .pricing section:last-child .informationForm .rightPosition,
+    .pricing section:last-child .informationForm .rightPosition2,
+    .pricing section:last-child .informationForm .rightPosition4,
+    .pricing section:last-child .informationForm .rightPosition5{
+        left: 190px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition3{
+        left: 190px;
+        width: 175px;
+    }
+
+    .pricing section:last-child .informationForm select{
+        width: 54.5px;
+        margin-right: 5px;
+    }
 }
 
 @media (max-width: 441px) {
+    .pricing{
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
     .pricing > section > h2{
         font-size: 20px;
     }
@@ -283,5 +445,36 @@
 
     .pricing .pricingDetails > div > *:last-child{
         padding: 5px 30px;
+    }
+
+    .pricing section:last-child .informationForm{
+        right: 75px;
+        height: 400px;
+    }
+
+    .pricing section:last-child .informationForm input{
+        width: 120px;
+    }
+
+    .pricing section:last-child .informationForm .rightPosition,
+    .pricing section:last-child .informationForm .rightPosition2,
+    .pricing section:last-child .informationForm .rightPosition4,
+    .pricing section:last-child .informationForm .rightPosition5{
+        left: 155px;
+    }
+    
+    .pricing section:last-child .informationForm .rightPosition3{
+        left: 155px;
+        width: 145px;
+    }
+
+    .pricing section:last-child .informationForm select{
+        width: 44.5px;
+        margin-right: 5px;
+        padding: 10px 0;
+    }
+
+    .pricing section:last-child .informationForm small{
+        font-size: 10px;
     }
 }
