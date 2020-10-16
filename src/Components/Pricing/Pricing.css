@@ -180,7 +180,7 @@
 }
 
 .pricing section:last-child .paymentForm > *{
-    width: 50%;
+    width: 70%;
 }
 
 @media (max-width: 1400px) {

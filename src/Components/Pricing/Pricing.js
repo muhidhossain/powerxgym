@@ -9,7 +9,8 @@ import { Check } from '@material-ui/icons';
 import { useForm } from "react-hook-form";
 import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import Stripe from '../Stripe/Stripe';
 
 const QontoConnector = withStyles({
     alternativeLabel: {
@@ -90,74 +91,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-class CheckoutForm extends React.Component {
-    handleSubmit = async (event) => {
-        // Block native form submission.
-        event.preventDefault();
-
-        const { stripe, elements } = this.props;
-
-        if (!stripe || !elements) {
-            // Stripe.js has not loaded yet. Make sure to disable
-            // form submission until Stripe.js has loaded.
-            return;
-        }
-
-        // Get a reference to a mounted CardElement. Elements knows how
-        // to find your CardElement because there can only ever be one of
-        // each type of element.
-        const cardElement = elements.getElement(CardElement);
-
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: 'card',
-            card: cardElement,
-        });
-
-        if (error) {
-            console.log('[error]', error);
-        } else {
-            console.log('[PaymentMethod]', paymentMethod);
-        }
-    };
-
-    render() {
-        const { stripe } = this.props;
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <CardElement
-                    options={{
-                        style: {
-                            base: {
-                                fontSize: '16px',
-                                color: '#424770',
-                                '::placeholder': {
-                                    color: '#aab7c4',
-                                },
-                            },
-                            invalid: {
-                                color: '#9e2146',
-                            },
-                        },
-                    }}
-                />
-                <button type="submit" disabled={!stripe}>
-                    Pay
-            </button>
-            </form>
-        );
-    }
-}
-
-const InjectedCheckoutForm = () => {
-    return (
-        <ElementsConsumer>
-            {({ elements, stripe }) => (
-                <CheckoutForm elements={elements} stripe={stripe} />
-            )}
-        </ElementsConsumer>
-    );
-};
-
 const Pricing = () => {
     const [pricingPlan, setPricingPlan] = useState(null);
     const [path, setPath] = useState(null);
@@ -166,9 +99,9 @@ const Pricing = () => {
 
     const { register, handleSubmit, errors } = useForm();
 
-    const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
-
     const location = useLocation();
+
+    const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
     const day = ['Day', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
     const month = ['Month', 'January', 'February', 'March', 'April', 'Mey', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -194,10 +127,19 @@ const Pricing = () => {
             setPricingPlan(null)
         }
     }, [location.pathname])
+
+    const ELEMENTS_OPTIONS = {
+        fonts: [
+            {
+                cssSrc: 'https://fonts.googleapis.com/css?family=Roboto',
+            },
+        ],
+    };
+
     return (
         <main className='pricing'>
             {
-                pricingPlan ?
+                !pricingPlan ?
                     <section>
                         <h2><span style={{ color: 'goldenrod' }}>CHOOSE THE OFFER</span> THAT SUITS YOU</h2>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat earum unde cum, reprehenderit doloremque facere?</p>
@@ -257,7 +199,7 @@ const Pricing = () => {
                                 </Step>
                             ))}
                         </Stepper>
-                        <div className='informationForm' style={{ display: activeStep === 1 ? 'flex' : 'none' }}>
+                        <div className='informationForm' style={{ display: activeStep === 0 ? 'flex' : 'none' }}>
                             <form>
                                 <label>First Name</label>
                                 <br />
@@ -341,9 +283,9 @@ const Pricing = () => {
                                 {errors.postcode && <small className='rightPosition5'>postcode is Required</small>}
                             </form>
                         </div>
-                        <div className='paymentForm' style={{ display: activeStep === 0 ? 'flex' : 'none' }}>
-                            <Elements stripe={stripePromise}>
-                                <InjectedCheckoutForm />
+                        <div className='paymentForm' style={{ display: activeStep === 1 ? 'flex' : 'none' }}>
+                            <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
+                                <Stripe />
                             </Elements>
                         </div>
                         <div className='steps'>
