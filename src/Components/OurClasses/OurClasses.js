@@ -1,30 +1,44 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import './OurClasses.css';
+import { Link } from 'react-router-dom';
 
 const OurClasses = () => {
+
     return (
         <main className='ourClasses'>
             <section>
                 <section>
-                    <Button>PHYSIO TRAINING </Button>
+                    <Link to='/physioTraining'>
+                        <Button className='classBtn'>PHYSIO TRAINING </Button>
+                    </Link>
                 </section>
                 <section>
-                    <Button>SELF DEFENSE</Button>
+                    <Link to='/selfDefense'>
+                        <Button className='classBtn'>SELF DEFENSE</Button>
+                    </Link>
                 </section>
                 <section>
-                    <Button>ADVANCE GYM</Button>
+                    <Link to='/advanceGym'>
+                        <Button className='classBtn'>ADVANCE GYM</Button>
+                    </Link>
                 </section>
             </section>
             <section>
                 <section>
-                    <Button>CARDIO TRAINING</Button>
+                    <Link to='/cardioTraining'>
+                        <Button className='classBtn'>CARDIO TRAINING</Button>
+                    </Link>
                 </section>
                 <section>
-                    <Button>STRENGTH TRAINING</Button>
+                    <Link to='/strengthTraining'>
+                        <Button className='classBtn'>STRENGTH TRAINING</Button>
+                    </Link>
                 </section>
                 <section>
-                    <Button>PHYSIO TRAINING</Button>
+                    <Link to='/physioTraining2'>
+                        <Button className='classBtn'>PHYSIO TRAINING</Button>
+                    </Link>
                 </section>
             </section>
         </main>
