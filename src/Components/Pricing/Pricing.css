@@ -183,6 +183,17 @@
     width: 70%;
 }
 
+.pricing .nextBtn{
+    display: flex;
+}
+
+.pricing .finishingMessage{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: goldenrod;
+}
+
 @media (max-width: 1400px) {
     .pricing > section > p{
         padding: 0 200px;
@@ -367,6 +378,10 @@
         padding: 10px 5px;
         margin-right: 10px;
     }
+
+    .pricing .finishingMessage img{
+        width: 400px;
+    }
 }
 
 @media (max-width: 550px) {
@@ -410,7 +425,7 @@
 
 @media (max-width: 441px) {
     .pricing{
-        margin: 0;
+        margin: 20px;
         margin-bottom: 20px;
     }
 
@@ -476,5 +491,9 @@
 
     .pricing section:last-child .informationForm small{
         font-size: 10px;
+    }
+
+    .pricing .finishingMessage img{
+        width: 270px;
     }
 }

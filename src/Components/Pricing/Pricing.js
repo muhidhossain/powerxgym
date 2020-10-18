@@ -11,6 +11,10 @@ import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Stripe from '../Stripe/Stripe';
+import { createContext } from 'react';
+import congratulation from '../../images/congratulation.png'
+
+export const PaymentContext = createContext();
 
 const QontoConnector = withStyles({
     alternativeLabel: {
@@ -95,7 +99,11 @@ const Pricing = () => {
     const [pricingPlan, setPricingPlan] = useState(null);
     const [path, setPath] = useState(null);
     const [activeStep, setActiveStep] = useState(0);
+    const [paymentMethod, setPaymentMethod] = useState(null);
     const [customerInformation, setCustomerInformation] = useState(null);
+
+    console.log(paymentMethod);
+
 
     const { register, handleSubmit, errors } = useForm();
 
@@ -215,15 +223,15 @@ const Pricing = () => {
                                 <br />
                                 <label className='leftPosition'>Email</label>
                                 <br />
-                                <input className='leftPosition' name='email' ref={register({ required: true })} />
+                                <input className='leftPosition' name='email' ref={register({ required: true, pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })} />
                                 <br />
-                                {errors.email && <small className='leftPosition'>Email is Required</small>}
+                                {errors.email && <small className='leftPosition'>Insert a valid email</small>}
                                 <br />
                                 <label className='rightPosition2'>Mobile Number</label>
                                 <br />
-                                <input className='rightPosition2' name='mobileNumber' ref={register({ required: true })} />
+                                <input className='rightPosition2' name='mobileNumber' ref={register({ required: true, pattern: /[0-9]/g })} />
                                 <br />
-                                {errors.mobileNumber && <small className='rightPosition2'>Mobile Number is Required</small>}
+                                {errors.mobileNumber && <small className='rightPosition2'>Insert a valid mobile number</small>}
                                 <br />
                                 <label className='leftPosition2'>Date of Birth</label>
                                 <br />
@@ -278,15 +286,23 @@ const Pricing = () => {
                                 <br />
                                 <label className='rightPosition5'>Postcode</label>
                                 <br />
-                                <input className='rightPosition5' name='postcode' ref={register({ required: true })} />
+                                <input className='rightPosition5' name='postcode' ref={register({ required: true, pattern: /[0-9]/g })} />
                                 <br />
-                                {errors.postcode && <small className='rightPosition5'>postcode is Required</small>}
+                                {errors.postcode && <small className='rightPosition5'>Insert a valid postcode</small>}
                             </form>
                         </div>
                         <div className='paymentForm' style={{ display: activeStep === 1 ? 'flex' : 'none' }}>
-                            <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-                                <Stripe />
-                            </Elements>
+                            <PaymentContext.Provider value={[paymentMethod, setPaymentMethod]}>
+                                <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
+                                    <Stripe />
+                                </Elements>
+                            </PaymentContext.Provider>
+                        </div>
+                        <div className='finishingMessage' style={{ display: activeStep === 2 ? 'flex' : 'none' }}>
+                            <div>
+                                <h3>Congratulation, now you are a member of our family.</h3>
+                                <img src={congratulation} alt=""/>
+                            </div>
                         </div>
                         <div className='steps'>
                             <div>
@@ -298,21 +314,51 @@ const Pricing = () => {
                                     </div>
                                 ) : (
                                         <div>
-                                            <div>
+                                            <div className='nextBtn'>
                                                 <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                                                     Back
                                                 </Button>
-                                                <Button
-                                                    variant="contained"
-                                                    style={{ background: 'goldenrod' }}
-                                                    onClick={handleSubmit((data) => {
-                                                        setCustomerInformation(data);
-                                                        handleNext();
-                                                    })}
-                                                    className={classes.button}
-                                                >
-                                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                                </Button>
+                                                {activeStep === 0 ?
+                                                    <Button
+                                                        variant="contained"
+                                                        style={{ background: 'goldenrod' }}
+                                                        onClick={handleSubmit((data) => {
+                                                            setCustomerInformation(data);
+                                                            handleNext();
+                                                        })}
+                                                        className={classes.button}
+                                                    >
+                                                        Next
+                                                    </Button> :
+                                                    <section>
+                                                        {
+                                                            activeStep === 1 ?
+                                                                <Button
+                                                                    disabled={paymentMethod === null}
+                                                                    variant="contained"
+                                                                    style={{ background: 'goldenrod' }}
+                                                                    onClick={handleSubmit((data) => {
+                                                                        setCustomerInformation(data);
+                                                                        handleNext();
+                                                                    })}
+                                                                    className={classes.button}
+                                                                >
+                                                                    Next
+                                                                </Button> :
+                                                                <Button
+                                                                    variant="contained"
+                                                                    style={{ background: 'goldenrod' }}
+                                                                    onClick={handleSubmit((data) => {
+                                                                        handleNext();
+                                                                        window.location.reload()
+                                                                    })}
+                                                                    className={classes.button}
+                                                                >
+                                                                    finish
+                                                                </Button>
+                                                        }
+                                                    </section>
+                                                }
                                             </div>
                                         </div>
                                     )}

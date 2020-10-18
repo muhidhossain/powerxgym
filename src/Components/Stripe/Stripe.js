@@ -7,6 +7,8 @@ import payment2 from '../../images/payment/payment2.png';
 import payment3 from '../../images/payment/payment3.png';
 import payPal from '../../images/payment/payPal.png';
 import PaypalBtn from 'react-paypal-checkout';
+import { useContext } from 'react';
+import {PaymentContext} from '../Pricing/Pricing'
 
 const SubmitButton = ({ processing, error, children, disabled }) => (
     <button
@@ -71,9 +73,9 @@ const Stripe = () => {
     const [error, setError] = useState(null);
     const [cardComplete, setCardComplete] = useState(false);
     const [processing, setProcessing] = useState(false);
-    const [paymentMethod, setPaymentMethod] = useState(null);
     const [billingDetails, setBillingDetails] = useState({ name: '', });
     const [selectedValue, setSelectedValue] = useState('a');
+    const [paymentMethod, setPaymentMethod] = useContext(PaymentContext)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
